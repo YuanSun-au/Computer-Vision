@@ -1,0 +1,7 @@
+coins.pgm
+coins-grad.pgm
+100
+50
+0.0001
+coins-circles.pgm
+coins-class-map.pgm

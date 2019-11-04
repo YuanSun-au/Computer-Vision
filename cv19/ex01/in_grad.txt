@@ -1,0 +1,4 @@
+coins.pgm
+3
+10
+coins-grad.pgm
