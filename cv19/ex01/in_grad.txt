@@ -1,4 +1,4 @@
 coins.pgm
-3
-10
+1
+15
 coins-grad.pgm

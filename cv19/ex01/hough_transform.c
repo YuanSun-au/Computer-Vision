@@ -3,6 +3,9 @@
 #include <string.h>
 #include <math.h>
 
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
 /*                       Hough Transform for Circles                        */
@@ -524,17 +527,26 @@ void vote_hough
  vote for each point that is an edge
 */
 
+
 {
-	long i, j, r; /* loop variables */
+	long dx, dy;
+	long i, j, cx, cy, r; /* loop variables */
 
 	for (i = 1; i <= nx; i++)
 		for (j = 1; j <= ny; j++)
-		{
-			for (r = r_min; r <= r_max; r++)
-			{
-				vote_circle (u_mag, c_list, r_max, r_min, nx, ny, i, j, r) ;
-			}
-		}
+			if (u_mag[i][j] != 0)
+				for (r=r_min; r<=r_max; r++){
+					vote_circle ( h[r], c_list, r_max, r_min, nx, ny, i, j, r) ;
+				}
+				// for (cx = MAX(0,i-r_max); cx <= MIN(nx,i+r_max); cx++)
+				// 	for (cy = MAX(0,j-r_max); cy <= MIN(ny,j+r_max); cy++)
+				// 	{
+				// 		dx = i - cx;
+				// 		dy = j - cy;
+				// 		r = (long) pow( (double)(dx*dx + dy*dy), 0.5);
+				// 		if (r >= r_min && r <= r_max)
+				// 			h[r][cx][cy] ++;
+				// 	}
 	return;
 
 } /* vote_hough */
