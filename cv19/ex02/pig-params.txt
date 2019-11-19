@@ -1,0 +1,6 @@
+pig1.pgm
+pig2.pgm
+1
+100
+pig-flow-class.pgm
+pig-flow-mag.pgm

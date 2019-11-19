@@ -1,0 +1,6 @@
+sphere1.pgm
+sphere2.pgm
+1
+0.1
+sphere-flow-class.pgm
+sphere-flow-mag.pgm
