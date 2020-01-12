@@ -228,12 +228,12 @@ void compute_motion_tensor(
 		{
 
 			/* ----- TODO: fill in your code here ---- */ 
-			fxx[i][j] = (fx[i+1][j] - fx[i-1][j]) * hx_1;
-			fxy[i][j] = (fx[i][j+1] - fx[i][j-1]) * hy_1;
-			fyy[i][j] = (fy[i][j+1] - fy[i][j-1]) * hy_1;
-
-			fxt[i][j] = (ft[i+1][j] - ft[i-1][j]) * hx_1;
-			fyt[i][j] = (ft[i][j+1] - ft[i][j-1]) * hy_1;
+			fxx[i][j] = ( fx[i+1][j] - fx[i-1][j] ) * hx_1;
+			fxy[i][j] = ( fx[i][j+1] - fx[i][j-1] ) * hy_1;
+			fyy[i][j] = ( fy[i][j+1] - fy[i][j-1] ) * hy_1;
+  
+			fxt[i][j] = ( ft[i+1][j] - ft[i-1][j] ) * hx_1;
+			fyt[i][j] = ( ft[i][j+1] - ft[i][j-1] ) * hy_1;
 			/* --------------------------------------- */
 		}
 
