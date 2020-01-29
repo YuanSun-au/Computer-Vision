@@ -52,7 +52,7 @@ void idm_updates(
 		{
 			H = heaviside_function(v[i][j], H_eps);
 
-			/*! TODO !*/
+			/*! TODO !*/ 
 			/*! compute the mean values "u_in" and "u_out" */
 			u_in += H * f[i][j];
 			u_out += (1-H) * f[i][j];
