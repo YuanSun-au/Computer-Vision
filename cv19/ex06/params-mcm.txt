@@ -1,0 +1,6 @@
+head.pgm
+0.01
+0.1
+210
+200
+head-out.pgm
