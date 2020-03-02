@@ -176,9 +176,38 @@ for (i=1; i<=nx; i++)
 
 /* ---- perform one Jacobi iteration ---- */
 
-/*
- SUPPLEMENT CODE
-*/
+/* Initialize boundaries with zeroes */:
+for (i=1; i<=nx; i++)
+{
+     v[i][0] = 0;//v[i][1];
+     v[i][ny+1] = 0;//v[i][ny];
+}
+for (j=0; j<=ny+1; j++)
+{
+     v[0][j] = 0;//v[1][j];
+     v[nx+1][j] = 0;//v[nx][j];
+}
+/* loop over all pixels */
+for (i=1; i<=nx; i++)
+     for (j=1; j<=ny; j++)
+     {
+          /* Determine size of neighbourhood */
+          nn = 4;
+          if (i==1 || i==nx) 
+               nn--;
+          if (j==1 || j==ny) 
+               nn--;
+
+          /* Apply iteration step */
+          u[i][j] = ( u1[i+1][j] + u1[i-1][j] + u1[i][j+1] + u1[i][j-1]
+                    - help * fx[i][j] * ( fy[i][j] * v1[i][j] + fz[i][j] ) )
+                    /
+                    ( nn + help * fx[i][j] * fx[i][j] );
+          v[i][j] = ( v1[i+1][j] + v1[i-1][j] + v1[i][j+1] + v1[i][j-1]
+                    - help * fy[i][j] * ( fx[i][j] * u1[i][j] + fz[i][j] ) )
+                    /
+                    ( nn + help * fy[i][j] * fy[i][j] );
+     }
 
 
 /* ---- disallocate storage ---- */
