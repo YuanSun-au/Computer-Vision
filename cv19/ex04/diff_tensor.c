@@ -125,7 +125,10 @@ void diff_tensor
 
 			/* calculate eigenvalues */
 			lam1 = alpha;
-			lam2 = alpha + (1-alpha) * exp( -C / pow(mu1-mu2,2) );
+			if (mu1==mu2)
+				lam2 = alpha;
+			else
+				lam2 = alpha + (1-alpha) * exp( -C / pow(mu1-mu2,2) );
 
 			/* principal axis backtransformation */
 			PA_backtrans ( c, s, lam1, lam2,
