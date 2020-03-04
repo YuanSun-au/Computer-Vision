@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 # from mpl_toolkits.mplot3d import Axes3D
 
+
 def gaussian_filter( img, sigma=1, precision=3, h=1):
 
     # calculate gaussian kernel
@@ -30,7 +31,9 @@ def gaussian_filter( img, sigma=1, precision=3, h=1):
     # return ndimage.gaussian_filter(img, sigma=sigma, mode='constant')
     return signal.convolve2d(img, gaussian2D, boundary='fill', mode='same')
     
+
 def EA(img, D, tau=0.1, hx=1, hy=1):
+    '''Anysotropic Diffusion Step'''
     
     imgp = np.pad(img,((1,1),(1,1)), mode='symmetric') # reflect
     Dp = np.pad(D, ((1,1),(1,1),(0,0),(0,0)), mode='constant')
@@ -126,7 +129,7 @@ h = 1
 img = mpimg.imread('./cv19/images/sbrain.pgm')[::2,::2]
 # img = misc.face(gray=True).astype(np.float32)
 # img_g1 = gaussian_filter(img, sigma=sigma, precision=precision, h=h)
-img_g1 = ndimage.gaussian_filter(img, sigma=sigma, mode='constant')
+img_g1 = ndimage.gaussian_filter(img, sigma=sigma, mode='mirror')
 img_g2 = EEAD(img, sigma=1, tau=0.2, tf=10, hx=h, hy=h)
 img_g3 = EEAD(img_g2, sigma=1, tau=0.2, tf=10, hx=h, hy=h)
 
